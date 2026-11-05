@@ -220,7 +220,7 @@ header{max-width:none}
 <section id="formats"><div class="label"><span>02 / Formats</span><span>Plays what you already have</span></div><div class="head"><h2>Six formats, <em>zero</em> converting</h2><p class="section-lede">Drop in MP3, WAV, FLAC, M4A or OGG files. Timed lyrics come from embedded tags or a matching .lrc file.</p></div><div class="fmts"><div class="fmt"><b>MP3</b><strong>MP3</strong><span>Tags + lyrics</span></div><div class="fmt"><b>WAV</b><strong>WAV</strong><span>Lossless</span></div><div class="fmt"><b>FLC</b><strong>FLAC</strong><span>Lossless</span></div><div class="fmt"><b>M4A</b><strong>M4A</strong><span>AAC</span></div><div class="fmt"><b>OGG</b><strong>OGG</strong><span>Vorbis</span></div><div class="fmt"><b>LRC</b><strong>LRC</strong><span>Synced lyrics</span></div></div><div class="more"><a data-store="windows" href="#install"><b>&#8599;</b>Add music</a></div></section><section id="showcase"><div class="label"><span>03 / Showcase</span><span>Inside the player</span></div><div class="tiles"><article class="tile"><div class="pic" role="img" aria-label="Musiko home screen"></div><div><h3>Lyrics that keep time</h3><p>Follow along with synced lyrics from your own files, with an online lookup when timing is missing.</p></div><div class="meta"><span>Lyrics</span><span>01</span></div></article><article class="tile"><div class="pic" role="img" aria-label="Musiko player bar"></div><div><h3>Controls always in reach</h3><p>Shuffle, repeat, skip and volume live in the bar at the bottom, or open the full-screen player.</p></div><div class="meta"><span>Player</span><span>02</span></div></article></div></section><section id="install"><div class="label"><span>04 / Install</span><span>Three steps</span></div>
 <div class="head"><h2>Up and playing in a <em>minute</em></h2><p class="section-lede">Musiko runs in its own app window on Windows. You can also use it in a browser on any computer.</p></div>
 <p class="req"><span>Windows PC</span><span>Microsoft Edge installed</span><span>Free</span></p>
-<ol class="steps"><li><div><h3>Download Musiko</h3><p>Download the zip file and extract it to a folder you like.</p></div></li><li><div><h3>Open Musiko.exe</h3><p>Double-click <code>Musiko.exe</code>. The player opens in its own Microsoft Edge app window.</p></div></li><li><div><h3>Add shortcuts (optional)</h3><p>Double-click <code>Install-Musiko.bat</code> to create Desktop and Start Menu shortcuts.</p></div></li></ol>
+<ol class="steps"><li><div><h3>Download Musiko</h3><p>Download <code>Musiko.exe</code>. It is a single file, so there is nothing to extract.</p></div></li><li><div><h3>Open Musiko.exe</h3><p>Double-click <code>Musiko.exe</code>. The player opens in its own Microsoft Edge app window. If Windows shows an unknown publisher warning, choose <em>More info</em>, then <em>Run anyway</em>.</p></div></li><li><div><h3>Add shortcuts (optional)</h3><p>The first time you open Musiko, it asks whether to add Desktop and Start Menu shortcuts.</p></div></li></ol>
 <div class="install-cta"><div class="cta-row"><a class="btn" data-store="windows" href="#install"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 11 4.4v7H3zM12 4.3 21 3v8.5h-9zM3 12.5h8v7L3 18.5zM12 12.5h9V21l-9-1.3z"/></svg> Download for Windows</a><a class="btn ghost" data-store="web" href="#install">Open in browser</a></div>
 <p class="status" id="status2" role="status" aria-live="polite"></p></div></section>
 <section id="start" class="start"><p class="kicker">Free &middot; Stays on your PC</p><h2>Start <em>playing.</em></h2><p class="section-lede" style="margin-inline:auto">Download Musiko, add your songs and press play.</p><div class="cta-row"><a class="btn" data-store="windows" href="#install">Download for Windows</a><a class="btn ghost" data-store="web" href="#install">Open in browser</a></div></section></main>
@@ -229,7 +229,7 @@ header{max-width:none}
 <script>
 /* Paste your real links between the quotes. Until a link is set, its button shows a short note instead. */
 var LINKS = {
-  windows: "",  // link to the Musiko zip, e.g. a GitHub release or your own file host
+  windows: "Musiko.exe",  // keep Musiko.exe in the same folder as this page
   web: "https://musikoone.vercel.app/"       // link to the browser version of Musiko
 };
 var NAMES = { windows: "Windows download", web: "browser version" };
@@ -244,8 +244,8 @@ var NAMES = { windows: "Windows download", web: "browser version" };
     var url = LINKS[key];
     if (url) {
       el.setAttribute("href", url);
-      el.setAttribute("target", "_blank");
-      el.setAttribute("rel", "noopener");
+      if (key === "windows") { el.setAttribute("download", ""); }
+      else { el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
     } else {
       el.addEventListener("click", function (e) {
         e.preventDefault();
